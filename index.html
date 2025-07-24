@@ -1,166 +1,114 @@
-/* GLOBAL + FONT IMPORT (Inter) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-:root {
-  --primary: #2F80ED;
-  --text: #111;
-  --background: #fafafb;
-  --card-bg: #fff;
-  --radius: 12px;
-  --shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-body {
-  margin:0; padding:0; box-sizing:border-box;
-  font-family: 'Inter', sans-serif;
-  background: var(--background);
-  color: var(--text);
-  scroll-behavior: smooth;
-}
-/* NAVIGATION */
-nav { display:flex; justify-content:space-between; align-items:center;
-  padding:24px 40px; background:#fff; border-bottom:1px solid #eee;
-  position:sticky; top:0; z-index:1000;
-}
-.logo { font-size:1.6rem; font-weight:600; color:var(--primary); }
-.nav-links { list-style:none; display:flex; gap:32px; }
-.nav-links a {
-  color:var(--text); font-weight:500; position:relative;
-}
-.nav-links a::after {
-  content:''; position:absolute; width:0; height:2px;
-  background:var(--primary); left:0; bottom:-4px;
-  transition: width 0.3s ease;
-}
-.nav-links a:hover::after { width:100%; }
-/* HERO */
-.hero-section {
-  background: linear-gradient(
-      to right,
-      rgba(47, 128, 237, 0.8),
-      rgba(28, 109, 208, 0.8)
-    ),
-    url('https://via.placeholder.com/2000x800?text=Luxury+Bath+Background')
-      center/cover no-repeat;
-  color: white;
-  padding: 140px 20px 140px; /* ample space top & bottom */
-  text-align: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 600px; /* gives consistent height on large screens */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AquaForm - Bath Fittings</title>
 
-.hero-section h1 {
-  font-size: 3.4rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-  max-width: 700px;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
-.hero-section p {
-  font-size: 1.3rem;
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0.9;
-  line-height: 1.5;
-}
+  <!-- AOS Animate On Scroll CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-.cta-btn {
-  margin-top: 40px; /* space below paragraph */
-  padding: 14px 36px;
-  background: #fff;
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  position: relative; /* layers properly */
-  z-index: 10;
-  display: inline-block;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-.cta-btn:hover {
-  background: #f2f2f2;
-}
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">AquaForm</div>
+    <ul class="nav-links">
+      <li><a href="#catalog">Catalog</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-/* CATALOG PREVIEW */
-.catalog-preview {
-  padding:100px 20px; background:#fff;
-  text-align:center;
-}
-.categories {
-  display:flex; justify-content:center; gap:20px;
-  flex-wrap:wrap; margin-top:40px;
-}
-.category-card {
-  background:var(--background); padding:28px 36px;
-  border-radius:var(--radius); box-shadow:var(--shadow);
-  font-weight:600; cursor:pointer;
-  transition:transform 0.3s ease, background 0.3s;
-}
-.category-card:hover {
-  transform:translateY(-6px);
-  background:#fafbfe;
-}
-/* PRODUCT GALLERY */
-.product-gallery { padding:120px 20px; background:var(--background); }
-.filter-buttons { text-align:center; margin-bottom:50px; }
-.filter-buttons button {
-  background:transparent; border:2px solid var(--primary);
-  color:var(--primary); padding:12px 24px;
-  margin:8px; border-radius:30px; font-weight:600;
-  cursor:pointer; transition:all 0.3s ease;
-}
-.filter-buttons button.active,
-.filter-buttons button:hover {
-  background:var(--primary); color:white;
-}
-.product-grid {
-  display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
-  gap:48px; padding:0 20px;
-}
-.product-card {
-  background:var(--card-bg); border-radius:var(--radius);
-  overflow:hidden; box-shadow:var(--shadow);
-  text-align:center; transition:transform 0.3s ease;
-}
-.product-card:hover { transform:translateY(-8px); }
-.product-card img {
-  width:100%; height:240px; object-fit:cover;
-}
-.product-card h3 { margin:18px 0 8px; font-size:1.2rem; }
-.price { font-weight:600; color:var(--primary); margin-bottom:16px; }
-.product-btn {
-  display:inline-block; margin-bottom:24px;
-  padding:12px 24px; background:var(--primary);
-  color:white; border-radius:30px; font-weight:500;
-  transition:background 0.3s ease;
-}
-.product-btn:hover { background:#1c6dd0; }
-/* CONTACT */
-.contact { padding:120px 20px; background:#fff; text-align:center; }
-.contact form { max-width:600px; margin:0 auto; }
-.contact input, .contact textarea {
-  width:100%; padding:16px 18px;
-  border:1px solid #ccc; border-radius:var(--radius);
-  margin-bottom:24px; font-size:1rem;
-  transition:box-shadow 0.3s ease;
-}
-.contact input:focus, .contact textarea:focus {
-  outline:none; box-shadow:0 0 0 3px rgba(47,128,237,0.3);
-}
-.contact button {
-  background:var(--primary); color:white; border:none;
-  padding:14px 28px; font-weight:600; border-radius:var(--radius);
-  cursor:pointer; transition:background 0.3s ease;
-}
-.contact button:hover { background:#1c6dd0; }
-/* FOOTER */
-footer {
-  background: var(--text); color: #eee; padding:40px 20px;
-  text-align:center; font-size:0.9rem;
-}
+  <!-- Hero Section -->
+  <header class="hero-section" data-aos="fade-down">
+    <h1>Elevate Your Space</h1>
+    <p>Premium Bath Fittings Designed for Modern Living</p>
+    <a href="#catalog" class="cta-btn">Explore Catalog</a>
+  </header>
+
+  <!-- Featured Categories -->
+  <section class="catalog-preview" id="catalog" data-aos="fade-up">
+    <h2>Featured Categories</h2>
+    <div class="categories">
+      <div class="category-card">Taps</div>
+      <div class="category-card">Showers</div>
+      <div class="category-card">Mixers</div>
+      <div class="category-card">Accessories</div>
+    </div>
+  </section>
+
+  <!-- Product Gallery -->
+  <section class="product-gallery" id="products">
+    <h2 data-aos="fade-up">Our Products</h2>
+
+    <!-- Filters -->
+    <div class="filter-buttons" data-aos="fade-up" data-aos-delay="100">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="taps">Taps</button>
+      <button data-filter="showers">Showers</button>
+      <button data-filter="mixers">Mixers</button>
+      <button data-filter="accessories">Accessories</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+      <div class="product-card" data-category="taps" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://via.placeholder.com/400x220?text=Chrome+Tap" alt="Chrome Tap" />
+        <h3>Chrome Basin Tap</h3>
+        <p class="price">$120</p>
+        <a href="#contact" class="product-btn">Enquire</a>
+      </div>
+      <div class="product-card" data-category="showers" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://via.placeholder.com/400x220?text=Rain+Shower" alt="Rain Shower" />
+        <h3>Rainfall Shower Head</h3>
+        <p class="price">$180</p>
+        <a href="#contact" class="product-btn">Enquire</a>
+      </div>
+      <div class="product-card" data-category="mixers" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://via.placeholder.com/400x220?text=Black+Mixer" alt="Black Mixer" />
+        <h3>Matte Black Wall Mixer</h3>
+        <p class="price">$140</p>
+        <a href="#contact" class="product-btn">Enquire</a>
+      </div>
+      <div class="product-card" data-category="accessories" data-aos="zoom-in" data-aos-delay="400">
+        <img src="https://via.placeholder.com/400x220?text=Soap+Dispenser" alt="Soap Dispenser" />
+        <h3>Soap Dispenser</h3>
+        <p class="price">$35</p>
+        <a href="#contact" class="product-btn">Enquire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact" data-aos="fade-up">
+    <h2>Get in Touch</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 AquaForm. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS Animate On Scroll JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
